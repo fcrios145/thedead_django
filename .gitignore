@@ -1,0 +1,5 @@
+virtenv/
+*.pyc
+.*swp
+.idea/
+.directory
