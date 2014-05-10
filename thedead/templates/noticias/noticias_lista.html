@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Noticias
+{% endblock %}
+
+{% block activoNoticias %}
+    active
+{% endblock %}
+
+<section>
+    <br/>
+
+    <h1>Noticias Recientes</h1>
+    {% block contenido %}
+
+        {% for noticia in noticias %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-3 col-md-6 col-lg-2">
+                            <br><br><img src="/media/{{ noticia.imagen }}" alt="{{ noticia.titulo }}" style="width: 100%"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-6 col-lg-8">
+                            <h3>{{ noticia.titulo }}<small> {{ noticia.autor }}<br/>{{ noticia.created.date }}</small></h3>
+                            <hr>
+                            <p align="justify">{{ noticia.contenido|truncatewords:35 }}<br><a href="/noticias/{{ noticia.slug }}">leer
+                                    más</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        {% endfor %}
+
+        <br/>
+
+    {% endblock %}
+</section>
+
+
+

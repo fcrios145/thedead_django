@@ -1,0 +1,109 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    The Dead Ate My Friends
+{% endblock %}
+
+{% block activoInicio %}
+active
+{% endblock %}
+{% block contenido %}
+
+
+    <div class="col-lg-6 titulo">
+        <h1>The Dead Ate My Friends</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus atque, eaque excepturi exercitationem
+            expedita modi nam nemo non obcaecati porro provident, quae quasi, recusandae rem repudiandae sed tempora
+            unde?</p>
+
+        <p><a class="btn btn-primary btn-lg" role="button">Jugar</a></p>
+    </div>
+
+    <div class="col-lg-6">
+
+        <!--Slider-->
+        <br/>
+        <section id="miSlide" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#miSlide" data-slide-to="0" class="active"></li>
+                <li data-target="#miSlide" data-slide-to="1"></li>
+                <li data-target="#miSlide" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{{ STATIC_URL }}img/slider1.png" class="adaptar">
+                </div>
+                <div class="item">
+                    <img src="{{ STATIC_URL }}img/slider2.png" class="adaptar">
+                </div>
+                <div class="item">
+                    <img src="{{ STATIC_URL }}img/slider1.png" class="adaptar">
+                </div>
+            </div>
+
+            <a href="#miSlide" class="left carousel-control" data-slide="prev"><span
+                    class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="#miSlide" class="right carousel-control" data-slide="next"><span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
+        </section>
+    </div>
+
+
+    <div class="col-lg-12">
+
+        <section class="color1">
+            <br/>
+
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <iframe style="margin-bottom: 30px" id="video" width="100%" height="300px"
+                                src="//www.youtube.com/embed/Uyzq9x-RGIQ?rel=0&autoplay=1&loop=1&playlist=Uyzq9x-RGIQ"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <h3>Teaser Trailer</h3>
+                        <hr>
+                        <p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis
+                            commodi consequatur dicta doloremque, et facere fugit illum ipsa, minima modi molestias
+                            officia porro quis repellendus repudiandae tenetur, voluptates. Harum. Lorem ipsum dolor sit
+                            amet, consectetur adipisicing elit. Consectetur culpa dicta dolorem dolores error est et
+                            facere illo, ipsa, ipsam laudantium magnam nam nobis officia optio pariatur repellendus
+                            saepe totam.</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+
+
+        <!--Contenidos Personalizados - Imagenes y Texto-->
+        <section>
+            <br/>
+            <h2>Noticias Recientes</h2>
+            <div class="row">
+            {% for noticia in noticias %}
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="row">
+                            <div class="hidden-xs col-sm-3 col-md-6 col-lg-6">
+                                <br><br><img src="media/{{ noticia.imagen }}" class="img-responsive">
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-6 col-lg-6">
+                                <h3>{{ noticia.titulo }}</h3>
+                                <hr>
+                                <p align="justify">{{ noticia.contenido|truncatewords:15 }}<br><a href="noticias/{{ noticia.slug }}">leer más</a></p>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- /container -->
+
+{% endblock %}
+

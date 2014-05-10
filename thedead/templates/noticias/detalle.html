@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ noticia.titulo }}
+{% endblock %}
+
+{% block activoNoticias %}
+    active
+{% endblock %}
+
+<section>
+    <br/>
+
+    <h1>{{ noticia.titulo }}</h1>
+    {% block contenido %}
+        <div class="row container">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+                <div class="row">
+                    {#                        <div class="hidden-xs col-sm-3 col-md-6 col-lg-2">#}
+                    {#                            <br><br><img src="/media/{{ noticia.imagen }}" alt="{{ noticia.titulo }}" style="width: 100%"/>#}
+                    {#                        </div>#}
+                    <div class="col-xs-12 col-sm-9 col-md-6 col-lg-10">
+                        <h3>{{ noticia.titulo }}
+                        <small>{{ noticia.autor }}<br/>{{ noticia.created.date }}</small>
+                        </h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <br><br><img src="/media/{{ noticia.imagen }}" alt="{{ noticia.titulo }}"
+                                             style="width: 100%"/>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <br/><br/><p align="justify">{{ noticia.contenido }}<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        </section>
+
+    {% endblock %}
+
+{% block extra_contenido %}
+    <br/>
+    <div class="container">
+    <div class="col-lg-8 transparente2">
+         <div id="disqus_thread"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'thedeadatemyfriends'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+{% endblock %}
+
